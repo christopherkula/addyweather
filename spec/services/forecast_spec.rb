@@ -12,8 +12,8 @@ RSpec.describe Forecast, type: :model do
     :zone=>"EST",
     :elevation=>19.0,
     :days=>[
-      DailyWeather.new("2024-11-15", 51, 53.7, 44.1),
-      DailyWeather.new("2024-11-16", 3, 56.6, 40.8)
+      DailyWeather.new("2024-11-15".to_date, 51, 53.7, 44.1),
+      DailyWeather.new("2024-11-16".to_date, 3, 56.6, 40.8)
     ]
   } }
 

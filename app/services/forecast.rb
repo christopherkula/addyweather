@@ -38,7 +38,7 @@ class Forecast
   # Transforms API results into an array of DailyWeather objects
   # Note that it takes the contents of the "daily" key as input.
   def parse_days(daily_data)
-    dates = daily_data["time"]
+    dates = daily_data["time"].map(&:to_date)
     codes = daily_data["weather_code"]
     highs = daily_data["temperature_2m_max"]
     lows  = daily_data["temperature_2m_min"]
