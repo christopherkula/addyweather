@@ -4,10 +4,10 @@
     <%= form.text_field :q, placeholder: 'enter address' %>
   <% end %>
 
-  <% if @location %>
+  <% if @not_found %>
+    <%= render "location_not_found" %>
+  <% elsif @location %>
     <div><%= render "location_header" %></div>
     <div class="daily-forecasts"><%= render partial: "daily_forecast", collection: @forecast.days %></div>
-  <% elsif @address.present? %>
-    <%= render "location_not_found" %>
   <% end %>
 </div>
