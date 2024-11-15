@@ -1,24 +1,43 @@
-# README
+# ADDYWEATHER
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails 7 application.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
 
-* System dependencies
+### Prerequisites
 
-* Configuration
+Ensure you have the following installed:
 
-* Database creation
+- Ruby `>= 3.0.0`
+- Rails `>= 7.0.0`
+- Node.js `>= 18`
+- Yarn `>= 1.22`
+- PostgreSQL
+- Redis (`redis-server`)
 
-* Database initialization
+### Installation
 
-* How to run the test suite
+1. Enable credentials:
 
-* Services (job queues, cache servers, search engines, etc.)
+   Obtain `config/master.key` from project administrator.
 
-* Deployment instructions
+2. Use `bin/setup` to load dependencies.
 
-* ...
+3. Run `bin/dev`, which will also kick up the Redis process.
+
+4. Browse to http://127.0.0.1:3000/
+
+
+### Production
+
+For review, the app is currently deployed on Heroku at:
+
+```
+https://addyweather-ca876e1ae5dc.herokuapp.com/
+```
+
+## Tests
+
+`bundle exec rspec`
