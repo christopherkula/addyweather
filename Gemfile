@@ -57,4 +57,5 @@ end
 
 group :test do
   gem "mock_redis"
+  gem "rails-controller-testing"
 end
