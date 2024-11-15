@@ -1,0 +1,6 @@
+<div class="daily-forecast">
+  <p class="weekday"><%= daily_forecast.date.strftime("%A") %></p>
+  <p class="date"><%= daily_forecast.date.strftime("%b %e, %Y") %>
+  <p class="description"><%= daily_forecast.description %></p>
+  <p class="temperatures">low: <%= daily_forecast.low %> / high: <%= daily_forecast.high %></p>
+</div>
