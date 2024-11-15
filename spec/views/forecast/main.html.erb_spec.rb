@@ -18,6 +18,8 @@ RSpec.describe "forecast/main.html.erb", type: :view do
   end
 
   context "when a location has been successfully queried" do
+    let(:from_cache) { false }
+
     before(:each) do
       assign(:location,
         LocationInfo.new(
@@ -31,7 +33,8 @@ RSpec.describe "forecast/main.html.erb", type: :view do
           days: [
             DailyWeather.new("2024-11-15".to_date, 51, 53.7, 44.1),
             DailyWeather.new("2024-11-16".to_date, 3, 56.6, 40.8)
-          ]
+          ],
+          from_cache: from_cache
         )
       )
     end
@@ -58,6 +61,20 @@ RSpec.describe "forecast/main.html.erb", type: :view do
       assert_select ".description", text: "overcast"
       assert_select ".temperatures", text: "low: 44.1 / high: 53.7"
       assert_select ".temperatures", text: "low: 40.8 / high: 56.6"
+    end
+
+    it "does not display the cache indicator" do
+      render
+      expect(rendered).not_to include("previously cached")
+    end
+
+    context "when pulled from cache" do
+      let(:from_cache) { true }
+
+      it "displays the cache indicator" do
+        render
+        expect(rendered).to include("previously cached")
+      end
     end
   end
 end

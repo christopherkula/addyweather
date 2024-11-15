@@ -3,5 +3,6 @@ LocationForecast = Struct.new(
   :longitude,
   :zone,
   :elevation,
-  :days
+  :days,
+  :from_cache
 )

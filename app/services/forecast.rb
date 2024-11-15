@@ -29,7 +29,8 @@ class Forecast
       longitude: data["longitude"],
       zone: data["timezone_abbreviation"],
       elevation: data["elevation"],
-      days: parse_days(data["daily"])
+      days: parse_days(data["daily"]),
+      from_cache: data["from_cache"]
     )
   end
 
@@ -60,6 +61,7 @@ class Forecast
   def fetch
     cache_service = ForecastCache.new(latitude: latitude, longitude: longitude)
     json = cache_service.get
+    from_cache = !!json
 
     if !json
       # No match found - fetch from API and add to cache.
@@ -67,7 +69,7 @@ class Forecast
       cache_service.set(json)
     end
 
-    JSON.parse(json)
+    JSON.parse(json).merge("from_cache" => from_cache)
   end
 
   # Raw API call, returning JSON

@@ -1,1 +1,6 @@
-<h3><%= [@location.city, @location.region, @location.country].compact.join(", ") %></h3>
+<div>
+  <h3><%= [@location.city, @location.region, @location.country].compact.join(", ") %></h3>
+  <% if @forecast.from_cache %>
+    <p class="from-cache-flag">previously cached</p>
+  <% end %>
+</div>

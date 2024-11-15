@@ -14,7 +14,8 @@ RSpec.describe Forecast, type: :model do
     days: [
       DailyWeather.new("2024-11-15".to_date, 51, 53.7, 44.1),
       DailyWeather.new("2024-11-16".to_date, 3, 56.6, 40.8)
-    ]
+    ],
+    from_cache: false
   } }
 
   it "populates LocationForecast from an API call" do
@@ -27,6 +28,6 @@ RSpec.describe Forecast, type: :model do
   it "populates LocationInfo from cache" do
     expect_any_instance_of(ForecastCache).to receive(:get).and_return(json)
 
-    expect(service.get.to_h).to eq(forecast_attributes)
+    expect(service.get.to_h).to eq(forecast_attributes.merge(from_cache: true))
   end
 end

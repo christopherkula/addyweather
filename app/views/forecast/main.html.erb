@@ -7,7 +7,7 @@
   <% if @not_found %>
     <%= render "location_not_found" %>
   <% elsif @location %>
-    <div><%= render "location_header" %></div>
+    <%= render "location_header" %>
     <div class="daily-forecasts"><%= render partial: "daily_forecast", collection: @forecast.days %></div>
   <% end %>
 </div>

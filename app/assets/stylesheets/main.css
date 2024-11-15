@@ -67,3 +67,7 @@ input {
   font-style: italic;
 }
 
+.from-cache-flag {
+  color: green;
+}
+
