@@ -7,11 +7,11 @@ RSpec.describe Forecast, type: :model do
   let(:service) { Forecast.new(latitude: latitude, longitude: longitude) }
   let(:json) { '{"latitude":38.890526,"longitude":-77.02716,"generationtime_ms":0.1310110092163086,"utc_offset_second":-18000,"timezone":"America/New_York","timezone_abbreviation":"EST","elevation":19.0,"current_units":{"time":"iso8601","interval":"seconds","is_day":""},"current":{"time":"2024-11-15T11:45","interval":900,"is_day":1},"daily_units":{"time":"iso8601","weather_code":"wmo code","temperature_2m_max":"°F","temperature_2m_min":"°F"},"daily":{"time":["2024-11-15","2024-11-16"],"weather_code":[51,3],"temperature_2m_max":[53.7,56.6],"temperature_2m_min":[44.1,40.8]}}' }
   let(:forecast_attributes) { {
-    :latitude=>38.890526,
-    :longitude=>-77.02716,
-    :zone=>"EST",
-    :elevation=>19.0,
-    :days=>[
+    latitude: 38.890526,
+    longitude: -77.02716,
+    zone: "EST",
+    elevation: 19.0,
+    days: [
       DailyWeather.new("2024-11-15".to_date, 51, 53.7, 44.1),
       DailyWeather.new("2024-11-16".to_date, 3, 56.6, 40.8)
     ]
